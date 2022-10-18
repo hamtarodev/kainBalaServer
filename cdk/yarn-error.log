@@ -1,0 +1,55 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Hamtaro\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+
+PATH: 
+  C:\Program Files\Amazon Corretto\jdk1.8.0_272\bin;D:\Program Files\Amazon Corretto\jdk11.0.3_7\bin;C:\Python27\;C:\Python27\Scripts;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\ProgramData\chocolatey\bin;C:\Program Files\PuTTY\;C:\Go\bin;C:\Program Files\CMake\bin;C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.252-2\bin;C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.252-2\jre\bin;C:\Program Files\Kubernetes\Minikube;C:\Program Files\dotnet\;D:\Tools\gradle\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\AndroidSDK\platform-tools;C:\Program Files\Git\cmd;D:\AndroidSDK;D:\Program Files\AWS CLI\;C:\ProgramData\chocolatey\lib\mpv.install\tools;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\nodejs\;D:\Program Files\GitHub CLI\;C:\Users\Hamtaro\.cargo\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Hamtaro\AppData\Local\Microsoft\WindowsApps;C:\Users\Hamtaro\AppData\Local\Programs\Microsoft VS Code\bin;D:\Flutter\flutter\bin;C:\Users\Hamtaro\go\bin;C:\Users\Hamtaro\.dotnet\tools;C:\Users\Hamtaro\AppData\Local\GitHubDesktop\bin;C:\Users\Hamtaro\AppData\Roaming\npm;C:\Program Files\OpenSSL-Win64\bin;C:\tools\dart-sdk\bin;C:\Users\Hamtaro\AppData\Roaming\Pub\Cache\bin;C:\Users\Hamtaro\.cargo\bin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  16.13.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, copyfile 'C:\Users\Hamtaro\AppData\Local\Yarn\Cache\v6\npm-aws-cdk-lib-2.44.0-e6157df7a72b8d1a4528f6fb9f9b0ed7aa404bcc-integrity\node_modules\aws-cdk-lib\node_modules\semver\index.js' -> 'D:\Projects\FullstackProject\kainBalaServer\cdk\node_modules\aws-cdk-lib\node_modules\semver\index.js'
+
+npm manifest: 
+  {
+    "name": "cdk",
+    "version": "0.1.0",
+    "bin": {
+      "cdk": "bin/cdk.js"
+    },
+    "scripts": {
+      "build": "tsc",
+      "watch": "tsc -w",
+      "test": "jest",
+      "cdk": "cdk"
+    },
+    "devDependencies": {
+      "@types/jest": "^27.5.2",
+      "@types/node": "10.17.27",
+      "@types/prettier": "2.6.0",
+      "aws-cdk": "2.44.0",
+      "jest": "^27.5.1",
+      "ts-jest": "^27.1.4",
+      "ts-node": "^10.9.1",
+      "typescript": "~3.9.7"
+    },
+    "dependencies": {
+      "aws-cdk-lib": "2.44.0",
+      "constructs": "^10.0.0",
+      "source-map-support": "^0.5.21"
+    },
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
