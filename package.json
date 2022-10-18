@@ -4,7 +4,10 @@
   "main": "index.js",
   "repository": "https://github.com/hamtarodev/kainBalaServer.git",
   "license": "MIT",
-  "dependencies": {
-    "eslint": "^8.25.0"
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "eslint": "^8.25.0",
+    "eslint-plugin-react": "^7.31.10"
   }
 }
