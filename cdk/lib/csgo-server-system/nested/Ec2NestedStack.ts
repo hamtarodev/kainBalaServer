@@ -53,7 +53,7 @@ export default class Ec2NestedStack extends NestedStack {
   }
 
   private createCsGoEc2Instance() {
-    return new ec2.Instance(this, 'sample', {
+    return new ec2.Instance(this, ResourceNameConstants.EC2_CSGO_INSTANCE_ID, {
       instanceName: ResourceNameConstants.EC2_CSGO_INSTANCE_NAME,
       instanceType: ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MEDIUM),
       vpc: this.csgoVPC,
@@ -62,7 +62,7 @@ export default class Ec2NestedStack extends NestedStack {
         'ap-southeast-1': 'ami-0f74c08b8b5effa56'
       }),
       blockDevices: [{
-        deviceName: '/dev/xdva',
+        deviceName: '/dev/sda1',
         volume: ec2.BlockDeviceVolume.ebs(30),
       }]
     });
