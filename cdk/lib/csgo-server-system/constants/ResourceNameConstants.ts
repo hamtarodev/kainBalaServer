@@ -19,6 +19,10 @@ export default class ResourceNameConstants {
   public static EC2_CSGO_INSTANCE_NAME = autoRename('csgo-server');
   
   // Lambda
-  public static DESCRIBE_INSTANCE_LAMBDA_ID  = 'DescribeInstanceLambda1ID';
-  public static DESCRIBE_INSTANCE_LAMBDA_NAME = autoRename('describe-instance-lambda1');
+  public static DESCRIBE_INSTANCES_LAMBDA_ID  = 'DescribeInstanceLambda1ID';
+  public static DESCRIBE_INSTANCES_LAMBDA_NAME = autoRename('describe-instance-lambda1');
+
+  // API GW
+  public static CSGO_API_GW_ID = 'CsgoApiGwID';
+  public static CSGO_API_GW_NAME = autoRename('csgo-api');
 }
