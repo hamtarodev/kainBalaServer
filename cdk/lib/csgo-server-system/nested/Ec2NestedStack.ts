@@ -1,7 +1,7 @@
 import {
   NestedStack,
   NestedStackProps,
-  aws_ec2 as ec2
+  aws_ec2 as ec2,
 } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import ResourceNameConstants from './../constants/ResourceNameConstants';
@@ -9,7 +9,6 @@ import ResourceNameConstants from './../constants/ResourceNameConstants';
 export default class Ec2NestedStack extends NestedStack {
   private csgoVPC: ec2.IVpc;
   private csgoSecurityGroup: ec2.ISecurityGroup;
-  private csgoKeyPair: ec2.CfnKeyPair;
 
   public csgoEc2Instance: ec2.Instance;
 
@@ -17,7 +16,6 @@ export default class Ec2NestedStack extends NestedStack {
     super(scope, id, props);
 
     this.createCsgoNetworkSettings();
-    this.createCsgoKeyPair();
 
     this.csgoEc2Instance = this.createCsGoEc2Instance();
   }
@@ -40,16 +38,7 @@ export default class Ec2NestedStack extends NestedStack {
 
     this.csgoSecurityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(22), 'SSH For Admin');
     this.csgoSecurityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.udp(27015),  'Gaming server port');
-  }
-
-  private createCsgoKeyPair() {
-    this.csgoKeyPair = new ec2.CfnKeyPair(this, ResourceNameConstants.CSGO_CFN_KEYPAIR_ID, {
-      keyName: ResourceNameConstants.CSGO_CFN_KEYPAIR_NAME,
-      tags: [{
-        key: 'appName',
-        value: this.node.tryGetContext('appName')
-      }]
-    });
+    this.csgoSecurityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(27015), 'For Player to access game server via RCON');
   }
 
   private createCsGoEc2Instance() {
@@ -63,8 +52,9 @@ export default class Ec2NestedStack extends NestedStack {
       }),
       blockDevices: [{
         deviceName: '/dev/sda1',
-        volume: ec2.BlockDeviceVolume.ebs(30),
-      }]
+        volume: ec2.BlockDeviceVolume.ebs(45),
+      }],
+      keyName: ResourceNameConstants.CSGO_PREMADE_KEYPAIR
     });
   }
 }

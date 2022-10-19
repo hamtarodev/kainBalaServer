@@ -10,6 +10,8 @@ export default class ResourceNameConstants {
   // KeyPair
   public static CSGO_CFN_KEYPAIR_ID = 'EC2CSGOKeyPairID';
   public static CSGO_CFN_KEYPAIR_NAME = 'csgo-keypair';
+  // default pre-made keypair
+  public static CSGO_PREMADE_KEYPAIR = 'kainbala-csgo-keypair';
 
   // EC2
   public static EC2_CSGO_INSTANCE_ID = 'EC2CSGOInsrtanceID';
