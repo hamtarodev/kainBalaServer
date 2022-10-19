@@ -38,6 +38,7 @@
       "aws",
       "aws-cn"
     ],
-    "appName": "kainbala"
+    "appName": "kainbala",
+    "region": "ap-southeast-1"
   }
 }
