@@ -10,14 +10,24 @@ import ResourceNameConstants from '../constants/ResourceNameConstants';
 import LocationConstants from './../../commons/constants/LocationConstants';
 
 export default class LambdaNestedStack extends NestedStack {
+  private commonEc2ManagedPolicy: iam.IManagedPolicy;
+
   public describeInstancesLambda: lambda.Function;
+  public startInstanceLambda: lambda.Function;
 
   constructor(scope: Construct, id: string, props?: NestedStackProps) {
     super(scope, id, props);
 
+    this.createCommonEc2ManagedPolicy();
+
     this.describeInstancesLambda = this.createDescribeInstancesLambda();
+    this.startInstanceLambda = this.createStartInstanceLambda();
     
     this.createApiEndpoints();
+  }
+
+  private createCommonEc2ManagedPolicy() {
+    this.commonEc2ManagedPolicy = iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonEC2FullAccess');
   }
 
   private createDescribeInstancesLambda() {
@@ -30,9 +40,22 @@ export default class LambdaNestedStack extends NestedStack {
         REGION: this.node.tryGetContext('region')
       }
     });
+    lambdaFunc.role?.addManagedPolicy(this.commonEc2ManagedPolicy);
 
-    const ec2Policy = iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonEC2FullAccess');
-    lambdaFunc.role?.addManagedPolicy(ec2Policy);
+    return lambdaFunc;
+  }
+
+  private createStartInstanceLambda() {
+    const lambdaFunc = new lambda.Function(this, ResourceNameConstants.START_INSTANCE_LAMBDA_ID, {
+      functionName: ResourceNameConstants.START_INSTANCE_LAMBDA_NAME,
+      handler: 'index.handler',
+      code: lambda.Code.fromAsset(LocationConstants.START_INSTANCE_LAMBDA_SRC),
+      runtime: lambda.Runtime.NODEJS_16_X,
+      environment: {
+        REGION: this.node.tryGetContext('region')
+      }
+    });
+    lambdaFunc.role?.addManagedPolicy(this.commonEc2ManagedPolicy);
 
     return lambdaFunc;
   }
@@ -49,6 +72,9 @@ export default class LambdaNestedStack extends NestedStack {
 
     const describeInstancesEndpoint = serverAPI.root.resourceForPath('describe-instances');
     describeInstancesEndpoint.addMethod('GET', new apiGw.LambdaIntegration(this.describeInstancesLambda));
+
+    const startInstanceEndpoint = serverAPI.root.resourceForPath('start-instance');
+    startInstanceEndpoint.addMethod('POST', new apiGw.LambdaIntegration(this.startInstanceLambda));
   }
 
   public addEnvToDescribeInstanceLambda(instanceID: string) {

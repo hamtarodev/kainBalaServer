@@ -6,6 +6,7 @@ module.exports = {
   mode: 'production',
   entry: {
     describe_instances_lambda: './src/lambda/DescribeContainer/DescribeContainerLambdaHandler.ts',
+    start_instance_lambda: './src/lambda/StartInstance/StartInstanceLambdaHandler.ts'
   },
   output: {
     path: path.resolve(__dirname, '../cdk/backend_dist'),

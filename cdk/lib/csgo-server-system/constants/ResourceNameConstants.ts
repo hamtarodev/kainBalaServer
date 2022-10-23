@@ -21,6 +21,8 @@ export default class ResourceNameConstants {
   // Lambda
   public static DESCRIBE_INSTANCES_LAMBDA_ID  = 'DescribeInstanceLambda1ID';
   public static DESCRIBE_INSTANCES_LAMBDA_NAME = autoRename('describe-instance-lambda1');
+  public static START_INSTANCE_LAMBDA_ID = 'StartInstanceLambda2ID';
+  public static START_INSTANCE_LAMBDA_NAME = autoRename('start-instance-lambda2');
 
   // API GW
   public static CSGO_API_GW_ID = 'CsgoApiGwID';
